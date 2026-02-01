@@ -1,0 +1,311 @@
+/* Copyright (C) 2026 DragWx <https://github.com/DragWx> */
+
+window.onload = init;
+
+var gamescreen;
+var canvas;
+var context;
+var inputMap = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "KeyZ", "KeyX"];
+var keyState = [false, false, false, false, false, false, false];
+var keySingle = [false, false, false, false, false, false, false];
+
+var fpsLimit = 1000/60.0;
+var fpsDisplay = true;
+var fpsCountA = 0;
+var fpsCountB = 0;
+var fpsAvg = fpsLimit;
+var fpsDom;
+
+function keydownhandler(e) {
+    if (!e.repeat) {
+        var i = inputMap.indexOf(e.code);
+        keyState[i] = true;
+        keySingle[i] = true;
+    }
+}
+
+function keyuphandler(e) {
+    var i = inputMap.indexOf(e.code);
+    keyState[i] = false;
+}
+
+function flushkeys() {
+	for (var i = 0; i < keySingle.length; i++) {
+		keySingle[i] = false;
+	}
+}
+
+function init() {
+	document.onkeydown = keydownhandler;
+	document.onkeyup = keyuphandler;
+	fpsDom = document.getElementById('footer');
+    gamescreen = document.getElementById("gamescreen");
+    gamescreen.innerHTML = "";
+
+    canvas = document.createElement("canvas");
+    canvas.id = "gamecanvas";
+    canvas.width = 320;
+    canvas.height = 240;
+
+    context = canvas.getContext("2d");
+    context.fillStyle = "#000";
+    context.fillRect(0,0,320,240);
+    context.fillStyle = "#FFF";
+    context.fillRect(159,119,3,3);
+    context.fillStyle = "#000";
+    context.fillRect(160,120,1,1);
+
+    gamescreen.appendChild(canvas);
+
+	if (fpsDisplay) {
+		fpsDom.style.display = "block";
+		fpsCountA = Date.now();
+	}
+    //loadLevel();
+    doNextFrame();
+}
+
+var nextFrame = 0;
+function doNextFrame() {
+    window.requestAnimationFrame(doNextFrame);
+    // FPS throttling.
+    var currFrame = Date.now();
+    if (currFrame >= nextFrame) {
+		// Increase the timestamp for the next frame. If after doing that, the current timestamp
+		// is still larger, then just drop the frames rather than fast forward to catch up.
+		if (currFrame >= (nextFrame += fpsLimit)) {
+            nextFrame = currFrame + fpsLimit;
+        }
+		// If enabled, calculate the game's FPS by comparing the timestamps and converting
+		// ms into hz
+		if (fpsDisplay) {
+			fpsCountB = fpsCountA;
+			fpsCountA = currFrame;
+			fpsAvg = (fpsAvg * 0.75) + ((fpsCountA - fpsCountB) * 0.25);
+			fpsDom.innerHTML = Math.round(1000/fpsAvg) + " fps";
+		}
+        // Update the game logic by one frame.
+        game_update();
+        // Clear out the single-keypress array
+        flushkeys();
+    }
+}
+
+var playerX = 160;
+var playerY = 120;
+var playerXSpeed = 0;
+var playerYSpeed = 0;
+
+var playerWidth = 16;
+var playerHeight = 24;
+
+// Also used for deceleration.
+var playerRunAcceleration = 32/256;
+
+var playerMaxRunSpeed = 2;
+var playerMaxRunSpeedWhileHovering = 1;
+
+// Speed set when jumping.
+var playerJumpSpeed = -4;
+
+// Gravity when holding jump.
+var playerSlowGravity = 32/256;
+// Gravity when not holding jump.
+var playerFastGravity = 192/256;
+var playerMaxFallSpeed = 3;
+// Applied instead of gravity, when hovering.
+var playerHoverAcceleration = 16/256;
+// What fall speed must be before you can hover, for the first hover of the jump (usually the jump crest)
+var playerInitialHoverThreshold = 1;
+// What fall speed must be before you can hover additional times after first.
+var playerAdditionalHoverThreshold = 384/256
+// What rise speed must be for hover to stop.
+var playerHoverEndThreshold = -288/256
+
+
+var playerIsMidair = true;
+// Determines gravity speed, can only become "true" at start of jump, or start of any hover.
+var playerIsHoldingJump = false;
+// Determines fall speed threshold, the first hover of a jump uses a different threshold.
+var playerInitialHoverDone = false;
+// Prevents hovering while true, is stuck true during cooldown, becomes false when player releases jump.
+var playerHasHovered = false;
+// Player is currently hovering.
+var playerIsHovering = false;
+// Cooldown amount when a hover is cancelled, before another hover can start.
+var playerHoverCooldown = 8;
+// Ticks down until zero, will prevent a hover while nonzero.
+var playerHoverCooldownTimer = 0;
+
+function game_update() {
+    var maxRunSpeed = (playerIsHovering ? playerMaxRunSpeedWhileHovering : playerMaxRunSpeed);
+    if (keyState[2]) {  // Left
+        if (playerXSpeed < -maxRunSpeed) {
+            // Player is going faster than max speed.
+            playerXSpeed += playerRunAcceleration;
+            if (playerXSpeed > -maxRunSpeed) {
+                // Player has decelerated enough to reach max speed.
+                playerXSpeed = -maxRunSpeed;
+            }
+        } else {
+            // Player is not max speed yet.
+            playerXSpeed -= playerRunAcceleration;
+            if (playerXSpeed < -maxRunSpeed) {
+                // Player has reached max speed.
+                playerXSpeed = -maxRunSpeed;
+            }
+        }
+    } else if (keyState[3]) {
+        if (playerXSpeed > maxRunSpeed) {
+            // Player is going faster than max speed.
+            playerXSpeed -= playerRunAcceleration;
+            if (playerXSpeed < maxRunSpeed) {
+                // Player has decelerated enough to reach max speed.
+                playerXSpeed = maxRunSpeed;
+            }
+        } else {
+            // Player is not max speed yet.
+            playerXSpeed += playerRunAcceleration;
+            if (playerXSpeed > maxRunSpeed) {
+                // Player has reached max speed.
+                playerXSpeed = maxRunSpeed;
+            }
+        }
+    } else {
+        if (playerIsMidair) {
+            // If in midair, decelerate only if player is faster than max speed.
+            if (playerXSpeed > maxRunSpeed) {
+                // Player is going faster than max speed.
+                playerXSpeed -= playerRunAcceleration;
+                if (playerXSpeed < maxRunSpeed) {
+                    // Player has decelerated enough to reach max speed.
+                    playerXSpeed = maxRunSpeed;
+                }
+            } else if (playerXSpeed < -maxRunSpeed) {
+                // Player is going faster than max speed.
+                playerXSpeed += playerRunAcceleration;
+                if (playerXSpeed > -maxRunSpeed) {
+                    // Player has decelerated enough to reach max speed.
+                    playerXSpeed = -maxRunSpeed;
+                }
+            }
+        } else {
+            // Unconditional deceleration to 0.
+            if (playerXSpeed > 0) {
+                playerXSpeed -= playerRunAcceleration;
+                if (playerXSpeed < 0) {
+                    playerXSpeed = 0;
+                }
+            } else {
+                playerXSpeed += playerRunAcceleration;
+                if (playerXSpeed > 0) {
+                    playerXSpeed = 0;
+                }
+            }
+        }
+    }
+
+    // Apply variable gravity.
+    if (playerIsMidair && !playerIsHovering && (playerYSpeed < playerMaxFallSpeed)) {
+        if (playerIsHoldingJump) {
+            playerYSpeed += playerSlowGravity;
+        } else {
+            playerYSpeed += playerFastGravity;
+        }
+        if (playerYSpeed > playerMaxFallSpeed) {
+            playerYSpeed = playerMaxFallSpeed;
+        }
+    }
+
+    // When jump is pressed while standing.
+    if (keySingle[6] && !playerIsMidair) {
+        playerYSpeed = playerJumpSpeed;
+        playerIsMidair = true;
+        playerIsHoldingJump = true;
+        playerInitialHoverDone = false;
+        playerHasHovered = false;
+        playerIsHovering = false;
+    }
+
+    // If jump is released in mid-air or mid-hover.
+    if (playerIsHoldingJump && !keyState[6]) {
+        playerIsHoldingJump = false;
+        if (playerIsHovering) {
+            // When hover is cancelled, use the cooldown timer to inhibit
+            // another hover.
+            playerIsHovering = false;
+            playerInitialHoverDone = true;
+            playerHoverCooldownTimer = playerHoverCooldown;
+        }
+    }
+
+
+    if (playerIsMidair) {
+        // Inhibit hover if cooling down.
+        if (playerHoverCooldownTimer > 0) {
+            playerHoverCooldownTimer--;
+            playerHasHovered = true;
+        }
+
+        // Listen for the jump button being held, so we can hover (when ok to do so)
+        // The first hover (at the crest of the jump) has a different start
+        // threshold than additional hovers after that.
+        if (keyState[6] && !playerHasHovered && !playerIsHovering && (playerYSpeed > (playerInitialHoverDone ? playerAdditionalHoverThreshold : playerInitialHoverThreshold))) {
+            playerYSpeed = (playerInitialHoverDone ? playerAdditionalHoverThreshold : playerInitialHoverThreshold);
+            playerIsHovering = true;
+            playerIsHoldingJump = true;
+        }
+
+        if (playerIsHovering) {
+            if ((playerYSpeed -= playerHoverAcceleration) < playerHoverEndThreshold) {
+                playerYSpeed = playerHoverEndThreshold;
+                playerIsHovering = false;
+                playerHasHovered = true;
+                playerInitialHoverDone = true;
+            }
+        }
+
+        // After a hover is finished, allow the player to retrigger a hover.
+        if (playerHasHovered && !keyState[6]) {
+            playerHasHovered = false;
+        }
+    }
+
+    playerY += playerYSpeed;
+    playerX += playerXSpeed;
+
+    // Basic collision with the screen edges.
+    if (playerY + playerHeight > 240) {
+        playerY = 240 - playerHeight;
+        playerYSpeed = 0;
+        playerIsMidair = false;
+        playerIsHovering = false;
+        playerHasHovered = false;
+        playerHoverCooldownTimer = 0;
+    }
+
+    if (playerX < 0) {
+        playerX = 0;
+        playerXSpeed = 0;
+    } else if (playerX + playerWidth > 320) {
+        playerX = 320 - playerWidth;
+        playerXSpeed = 0;
+    }
+
+
+
+    // Clear the screen to get ready for drawing on it.
+    context.fillStyle = "#000";
+    context.fillRect(0,0,320,240);
+
+    // Draw Player
+    if (playerIsHovering) {
+        context.fillStyle = "#F00";
+    } else if (playerHoverCooldownTimer > 0) {
+        context.fillStyle = "#800";
+    } else {
+        context.fillStyle = "#48F";
+    }
+    context.fillRect(playerX, playerY, playerWidth, playerHeight);
+
+}
