@@ -99,8 +99,8 @@ var playerYSpeed = 0;
 var playerWidth = 16;
 var playerHeight = 24;
 
-// Also used for deceleration.
-var playerRunAcceleration = 32/256;
+var playerRunAcceleration = 16/256;
+var playerRunDeceleration = 32/256;
 
 var playerMaxRunSpeed = 2;
 var playerMaxRunSpeedWhileHovering = 1;
@@ -142,14 +142,19 @@ function game_update() {
     if (keyState[2]) {  // Left
         if (playerXSpeed < -maxRunSpeed) {
             // Player is going faster than max speed.
-            playerXSpeed += playerRunAcceleration;
+            playerXSpeed += playerRunDeceleration;
             if (playerXSpeed > -maxRunSpeed) {
                 // Player has decelerated enough to reach max speed.
                 playerXSpeed = -maxRunSpeed;
             }
         } else {
             // Player is not max speed yet.
-            playerXSpeed -= playerRunAcceleration;
+            if (playerXSpeed > 0) {
+                // Speed is opposite direction, so skid.
+                playerXSpeed -= playerRunDeceleration;
+            } else {
+                playerXSpeed -= playerRunAcceleration;
+            }
             if (playerXSpeed < -maxRunSpeed) {
                 // Player has reached max speed.
                 playerXSpeed = -maxRunSpeed;
@@ -158,14 +163,19 @@ function game_update() {
     } else if (keyState[3]) {
         if (playerXSpeed > maxRunSpeed) {
             // Player is going faster than max speed.
-            playerXSpeed -= playerRunAcceleration;
+            playerXSpeed -= playerRunDeceleration;
             if (playerXSpeed < maxRunSpeed) {
                 // Player has decelerated enough to reach max speed.
                 playerXSpeed = maxRunSpeed;
             }
         } else {
             // Player is not max speed yet.
-            playerXSpeed += playerRunAcceleration;
+            if (playerXSpeed < 0) {
+                // Speed is opposite direction, so skid.
+                playerXSpeed += playerRunDeceleration;
+            } else {
+                playerXSpeed += playerRunAcceleration;
+            }
             if (playerXSpeed > maxRunSpeed) {
                 // Player has reached max speed.
                 playerXSpeed = maxRunSpeed;
@@ -176,14 +186,14 @@ function game_update() {
             // If in midair, decelerate only if player is faster than max speed.
             if (playerXSpeed > maxRunSpeed) {
                 // Player is going faster than max speed.
-                playerXSpeed -= playerRunAcceleration;
+                playerXSpeed -= playerRunDeceleration;
                 if (playerXSpeed < maxRunSpeed) {
                     // Player has decelerated enough to reach max speed.
                     playerXSpeed = maxRunSpeed;
                 }
             } else if (playerXSpeed < -maxRunSpeed) {
                 // Player is going faster than max speed.
-                playerXSpeed += playerRunAcceleration;
+                playerXSpeed += playerRunDeceleration;
                 if (playerXSpeed > -maxRunSpeed) {
                     // Player has decelerated enough to reach max speed.
                     playerXSpeed = -maxRunSpeed;
@@ -192,12 +202,12 @@ function game_update() {
         } else {
             // Unconditional deceleration to 0.
             if (playerXSpeed > 0) {
-                playerXSpeed -= playerRunAcceleration;
+                playerXSpeed -= playerRunDeceleration;
                 if (playerXSpeed < 0) {
                     playerXSpeed = 0;
                 }
             } else {
-                playerXSpeed += playerRunAcceleration;
+                playerXSpeed += playerRunDeceleration;
                 if (playerXSpeed > 0) {
                     playerXSpeed = 0;
                 }
