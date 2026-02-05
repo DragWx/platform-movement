@@ -276,7 +276,7 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
         testTileBelowNo = layout[collTileYBelow][collTileX];
     }
 
-    testHeight = null;
+    var testHeight = null;
     if (testTileNo) {
         let testTile = tiles[testTileNo-1];
         testHeight = testTile.columns[collTilePixelX] - 1;
@@ -291,7 +291,9 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
             }
         }
     } else {
-        // Check tile below.
+        // Check tile below. This is necessary for when we're trying to stay
+        // aligned to a downward-moving slope: the slope will eventually move
+        // down one layout-row, and we have to be able to detect that.
         if (testTileBelowNo) {
             let testTileBelow = tiles[testTileBelowNo-1];
             testHeight = testTileBelow.columns[collTilePixelX] + 7
