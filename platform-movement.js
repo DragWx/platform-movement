@@ -100,13 +100,13 @@ var layout = [
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  2,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  1,  0,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  1,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  1,  1,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  5,  6,  2,  7,  8,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -118,10 +118,10 @@ var layout = [
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+    [ 0,  0,  0,  0,  0,  0,  9,  2, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  9,  1,  1,  1,  2, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  9,  1,  1,  1,  1,  1,  1,  2, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 2,  2,  2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
 ]
 
 var tiles = [
@@ -132,7 +132,10 @@ var tiles = [
     { columns: [8,8,7,7,6,6,5,5], speed: [1   , 0.89], image: null },
     { columns: [4,4,3,3,2,2,1,1], speed: [1   , 0.89], image: null },
     { columns: [1,1,2,2,3,3,4,4], speed: [0.89, 1   ], image: null },
-    { columns: [5,5,6,6,7,7,8,8], speed: [0.89, 1   ], image: null }
+    { columns: [5,5,6,6,7,7,8,8], speed: [0.89, 1   ], image: null },
+    { columns: [5,5,5,5,1,1,1,1], speed: [1   , 0.71], image: null },
+    { columns: [1,1,1,1,5,5,5,5], speed: [0.71, 1   ], image: null },
+    { columns: [5,5,5,5,5,5,5,5], speed: [1   , 1   ], image: null }
 ]
 
 // Speed makes it so you run slower uphill.
@@ -314,11 +317,146 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
     }
 }
 
+function player_CheckBottomEdge() {
+    // Along the bottom edge, find the nearest pixel of the nearest solid tile,
+    // nearest to the midpoint of the bottom edge.
+
+    // First, check the midpoint itself to see if it's overtop a solid tile.
+
+    var playerXMidpoint = (playerWidth / 2) |0;
+    var playerOffsetX = playerXMidpoint;
+    var checkPixelX = playerXInt + playerOffsetX;
+    
+    var checkTileX = checkPixelX / 8 |0;
+    var checkTileY = (playerYInt + playerHeight) / 8 |0;
+
+    var checkTileNo = 0;
+    if ((checkTileY >= 0) && (checkTileY < layout.length)) {
+        if ((checkTileX >= 0) && (checkTileX < layout[checkTileY].length)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+        }
+    } else {
+        // Y is out of bounds.
+        return null;
+    }
+    if (checkTileNo != 0) {
+        // Midpoint is on a solid tile, done.
+        return playerOffsetX;
+    }
+
+    // Midpoint is not on a solid tile. Next, keep checking progressively
+    // outward until we find a solid tile.
+    
+    // First, determine whether we're closer to the left or right tile boundary.
+    var tileOffsetX = checkPixelX % 8 |0;
+    var pixelIncrementAmount = 1;
+    var tileIncrementAmount = 1;
+    var moveRightNotLeft = (tileOffsetX >= 4) ? true : false;
+    if (moveRightNotLeft) {
+        playerOffsetX = playerOffsetX - tileOffsetX + 7;
+    } else {
+        playerOffsetX = playerOffsetX - tileOffsetX;
+    }
+
+    // Now bounce left and right (or right and left), progressively getting
+    // farther outward. Doing it this way means we check each boundary in order
+    // from nearest to farthest.
+
+    // We want to check the leftmost pixel of rightward tiles, and the rightmost
+    // pixel of leftward tiles.
+
+    for (let i = 0; i < 16; i++) {
+        if (moveRightNotLeft) {
+            playerOffsetX += pixelIncrementAmount;
+            checkTileX += tileIncrementAmount;
+        } else {
+            playerOffsetX -= pixelIncrementAmount;
+            checkTileX -= tileIncrementAmount;
+        }
+        if ((playerOffsetX < 0) || (playerOffsetX >= playerWidth)) {
+            // The next boundary is outside of our bottom edge, so we didn't
+            // find any solid tiles.
+            return null;
+        }
+        if ((checkTileX >= 0) && (checkTileX < layout[checkTileY].length)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+            if (checkTileNo != 0) {
+                // Found a tile!
+                break;
+            }
+        }
+        if (i == 15) {
+            // Just preventing an infinite loop.
+            return null;
+        }
+        pixelIncrementAmount += 8;
+        tileIncrementAmount++;
+        moveRightNotLeft = !moveRightNotLeft;
+    }
+
+    // See how long we can trace a continuous slope towards the midpoint.
+    // Stop if the change is too great, or if we reach the midpoint.
+    
+    var checkTile = tiles[checkTileNo-1];
+    var checkHeightPrev = null;
+    var checkHeightNext = null;
+
+    // TODO: This code relies on there only being three tiles to check, only
+    // one boundary between a side tile and the midpoint tile. The correct
+    // thing to do is to continue tracing the slope, column by column, crossing
+    // tile boundaries, until you find two columns with too big of a change,
+    // a cliff, or until you get to the midpoint.
+    if (moveRightNotLeft) {
+        // We're on the left boundary of a tile to the right.
+        checkHeightPrev = checkTile.columns[0] - 1;
+        if (checkHeightPrev < 0) {
+            checkHeightPrev = 0;
+        }
+        checkTileX--;
+        checkTileY++;
+        checkTileNo = 0;
+        if ((checkTileY < layout.length) && (checkTileX >= 0)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+        }
+        if (checkTileNo != 0) {
+            checkTile = tiles[checkTileNo-1];
+            checkHeightNext = checkTile.columns[7] + 7;
+            if (checkHeightNext - checkHeightPrev <= 4) {
+                return playerXMidpoint;
+            }
+        }
+    } else {
+        // We're on the right boundary of a tile to the left.
+        checkHeightPrev = checkTile.columns[7] - 1;
+        if (checkHeightPrev < 0) {
+            checkHeightPrev = 0;
+        }
+        checkTileX++;
+        checkTileY++;
+        checkTileNo = 0;
+        if ((checkTileY < layout.length) && (checkTileX < layout[checkTileY].length)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+        }
+        if (checkTileNo != 0) {
+            checkTile = tiles[checkTileNo-1];
+            checkHeightNext = checkTile.columns[0] + 7;
+            if (checkHeightNext - checkHeightPrev <= 4) {
+                return playerXMidpoint;
+            }
+        }
+    }
+
+    return playerOffsetX;
+}
+
 function game_update() {
     /* #region Handle movement */
     var maxRunSpeed = (playerIsHovering ? playerMaxRunSpeedWhileHovering : playerMaxRunSpeed);
     if (!playerIsMidair) {
-        maxRunSpeed *= player_GetSpeedAtPoint(playerWidth/2, playerHeight)[(playerXSpeed > 0) ? 1 : 0];
+        let testResult = player_CheckBottomEdge();
+        if (testResult !== null) {
+            maxRunSpeed *= player_GetSpeedAtPoint(testResult, playerHeight)[(playerXSpeed > 0) ? 1 : 0];
+        }
     }
     if (keyState[2]) {  // Left
         if (playerXSpeed < -maxRunSpeed) {
@@ -466,11 +604,14 @@ function game_update() {
 
     // Adjust height for slope.
     if (!playerIsMidair) {
-        var testResult = player_GetHeightAtPoint(playerWidth/2, playerHeight);
-        if (testResult != null) {
+        var testResult = player_CheckBottomEdge();
+        if (testResult !== null) {
+            testResult = player_GetHeightAtPoint(testResult, playerHeight);
+        }
+        if (testResult !== null) {
             let adjustedPlayerY = (testResult.tileY * 8) - playerHeight + testResult.height;
             let difference = adjustedPlayerY - playerYInt;
-            if ((difference > -4) && (difference < 4)) {
+            if ((difference >= -4) && (difference <= 4)) {
                 playerY = adjustedPlayerY;
                 playerYInt = playerY |0;
             }
@@ -497,12 +638,15 @@ function game_update() {
     context.fillStyle = "#000";
     context.fillRect(0,0,320,240);
     
-    testResult = player_GetHeightAtPoint(playerWidth/2, playerHeight);
+    var testResult = player_CheckBottomEdge();
+    if (testResult !== null) {
+        testResult = player_GetHeightAtPoint(testResult, playerHeight);
+    }
 
     if (!playerIsMidair && (testResult == null || !testResult.colliding)) {
         playerIsHoldingJump = keyState[6];
         player_InAir();
-    } else if (playerIsMidair && (testResult != null) && testResult.colliding) {
+    } else if (playerIsMidair && (testResult !== null) && testResult.colliding) {
         player_Stand();
         playerY = (testResult.tileY * 8) - playerHeight + testResult.height;
         playerYInt = playerY |0;
