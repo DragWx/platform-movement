@@ -91,7 +91,7 @@ function doNextFrame() {
     }
 }
 
-var layout = [
+var layoutA = [
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
@@ -124,18 +124,54 @@ var layout = [
     [ 2,  2,  2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
 ]
 
+var layoutB = [
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  2,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  1,  0,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  1,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+]
+
+var layout = layoutB;
+
+
 var tiles = [
-    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], image: null },
-    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], image: null },
-    { columns: [8,7,6,5,4,3,2,1], speed: [1   , 0.71], image: null },
-    { columns: [1,2,3,4,5,6,7,8], speed: [0.71, 1   ], image: null },
-    { columns: [8,8,7,7,6,6,5,5], speed: [1   , 0.89], image: null },
-    { columns: [4,4,3,3,2,2,1,1], speed: [1   , 0.89], image: null },
-    { columns: [1,1,2,2,3,3,4,4], speed: [0.89, 1   ], image: null },
-    { columns: [5,5,6,6,7,7,8,8], speed: [0.89, 1   ], image: null },
-    { columns: [5,5,5,5,1,1,1,1], speed: [1   , 0.71], image: null },
-    { columns: [1,1,1,1,5,5,5,5], speed: [0.71, 1   ], image: null },
-    { columns: [5,5,5,5,5,5,5,5], speed: [1   , 1   ], image: null }
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], image: null },   // 1
+    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], image: null },   // 2
+    { columns: [8,7,6,5,4,3,2,1], speed: [1   , 0.71], image: null },   // 3
+    { columns: [1,2,3,4,5,6,7,8], speed: [0.71, 1   ], image: null },   // 4
+    { columns: [8,8,7,7,6,6,5,5], speed: [1   , 0.89], image: null },   // 5
+    { columns: [4,4,3,3,2,2,1,1], speed: [1   , 0.89], image: null },   // 6
+    { columns: [1,1,2,2,3,3,4,4], speed: [0.89, 1   ], image: null },   // 7
+    { columns: [5,5,6,6,7,7,8,8], speed: [0.89, 1   ], image: null },   // 8
+    { columns: [5,5,5,5,1,1,1,1], speed: [1   , 0.71], image: null },   // 9
+    { columns: [1,1,1,1,5,5,5,5], speed: [0.71, 1   ], image: null },   // 10
+    { columns: [5,5,5,5,5,5,5,5], speed: [1   , 1   ], image: null }    // 11
 ]
 
 // Speed makes it so you run slower uphill.
@@ -449,6 +485,127 @@ function player_CheckBottomEdge() {
     return playerOffsetX;
 }
 
+function player_CheckSideEdge(rightNotLeft = false) {
+
+    // Start at the corner, then trace upwards.
+
+    var checkPixelX = rightNotLeft ? (playerXInt + playerWidth) : (playerXInt - 1);
+    var checkPixelY = playerYInt + playerHeight - 1 |0;
+    var checkTileX = checkPixelX / 8 |0;
+    var checkTileY = checkPixelY / 8 |0;
+    var checkTileYPixelOffset = checkPixelY % 8;
+    var checkColumn = rightNotLeft ? 0 : 7;
+
+    var checkTileNo = 0;
+    if ((checkTileX >= 0) && (checkTileY >= 0) && (checkTileY < layout.length) && (checkTileX < layout[checkTileY].length)) {
+        checkTileNo = layout[checkTileY][checkTileX];
+    }
+
+    var colliding = false;
+
+    if (checkTileNo != 0) {
+        // The corner is overlapping a solid tile, so find the top.
+        let columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
+        let aboveSurface = false;
+
+        if (columnHeight == -1) {
+            // Check tile above.
+            checkTileY--;
+            if (checkTileY >= 0) {
+                checkTileNo = layout[checkTileY][checkTileX];
+                if (checkTileNo != 0) {
+                    columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
+                    if (columnHeight == -1) {
+                        // Too tall, just assume it's a wall.
+                        colliding = true;
+                    }
+                } else {
+                    // No additional solid tile above.
+                    columnHeight = 0;
+                    checkTileY++;
+                }
+            } else {
+                // We've gone off the top of the stage.
+                columnHeight = 0;
+                checkTileY++;
+            }
+        } else if (checkTileYPixelOffset < columnHeight) {
+            // The bottom of our edge is above the tile's column height on that
+            // boundary, so we're going to assume we won't collide with it.
+            aboveSurface = true;
+        }
+
+        if (!colliding && !aboveSurface) {
+            // Now check the adjacent tile's heightmap, to see if the
+            // boundary is a continuous surface.
+            let adjacentCheckColumn = rightNotLeft ? 7 : 0;
+            let adjacentColumnHeight = null;
+            checkTileNo = 0;
+            
+            checkTileX += rightNotLeft ? -1 : 1;
+            if ((rightNotLeft && (checkTileX >= 0)) || (!rightNotLeft && (checkTileX < layout[checkTileY].length))) {
+                checkTileNo = layout[checkTileY][checkTileX];
+                
+                if (checkTileNo != 0) {
+                    adjacentColumnHeight = tiles[checkTileNo-1].columns[adjacentCheckColumn] - 1;
+                } else {
+                    // No tile directly adjacent, so check tile below.
+                    checkTileY++;
+                    if (checkTileY < layout.length) {
+                        checkTileNo = layout[checkTileY][checkTileX];
+                    }
+                    checkTileY--;
+                    if (checkTileNo != 0) {
+                        adjacentColumnHeight = tiles[checkTileNo-1].columns[adjacentCheckColumn] + 7;
+                        if (adjacentColumnHeight == 7) {
+                            // We already know the tile above is blank.
+                            adjacentColumnHeight = 8;
+                        }
+                    }
+                }
+            }
+            checkTileX -= rightNotLeft ? -1 : 1;
+
+            // If adjacentColumnHeight is still null here, then there's
+            // a gap before the column we're checking.
+            if (adjacentColumnHeight !== null) {
+                if ((adjacentColumnHeight - columnHeight) > 4) {
+                    // The surface is not continuous.
+                    colliding = true;
+                }
+            } else {
+                // There's a gap before the column we're checking.
+                colliding = true;
+                // TODO: We can check if we're standing on the ground, and if
+                // so, what height the ground is, and whether the height of
+                // the wall is low enough that we can step up onto it.
+            }
+        }
+    }
+
+    // At this point of the code, we've checked if the bottom of the edge was
+    // overlapping something solid.
+    // If it was, we traced to the top of it and detected any collision.
+    // If it wasn't, then we know the bottom-most tile is empty.
+    // Either way, checkTileX/Y is now pointing at the last checked tile.
+
+    if (!colliding) {
+        checkTileY--;
+        // checkTileX/Y is now pointing at the next unchecked tile.
+
+        // TODO: Scan from here to the top to see if there are any solid tiles.
+    }
+
+    if (colliding) {
+        if (rightNotLeft) {
+            return { colliding: true, alignX: checkTileX * 8 - playerWidth + 0.5 };
+        } else {
+            return { colliding: true, alignX: (checkTileX+1) * 8 + 0.5 };
+        }
+    }
+    return null;
+}
+
 function game_update() {
     /* #region Handle movement */
     var maxRunSpeed = (playerIsHovering ? playerMaxRunSpeedWhileHovering : playerMaxRunSpeed);
@@ -597,6 +754,8 @@ function game_update() {
         }
     }
 
+    /* #endregion */
+
     playerY += playerYSpeed;
     playerYInt = playerY |0;
     playerX += playerXSpeed;
@@ -618,8 +777,7 @@ function game_update() {
         }
     }
 
-
-    /* #endregion */
+    var testResult = null;
 
     // Basic collision with the screen edges.
     if (playerY > 240) {
@@ -638,7 +796,9 @@ function game_update() {
     context.fillStyle = "#000";
     context.fillRect(0,0,320,240);
     
-    var testResult = player_CheckBottomEdge();
+
+    // Detect whether player is standing or midair.
+    testResult = player_CheckBottomEdge();
     if (testResult !== null) {
         testResult = player_GetHeightAtPoint(testResult, playerHeight);
     }
@@ -651,7 +811,20 @@ function game_update() {
         playerY = (testResult.tileY * 8) - playerHeight + testResult.height;
         playerYInt = playerY |0;
     }
+
+    // Detect wall.
+    testResult = null;
+
+    if (playerXSpeed != 0) {
+        testResult = player_CheckSideEdge((playerXSpeed > 0) ? true : false);
+    }
     
+    if ((testResult !== null) && (testResult.colliding)) {
+        playerXSpeed = 0;
+        playerX = testResult.alignX;
+        playerXInt = playerX |0;
+    }    
+
     // Draw the layout.
     for (let y = 0; y < layout.length; y++) {
         let drawY = y * 8;
