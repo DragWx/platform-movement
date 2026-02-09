@@ -67,7 +67,6 @@ function init() {
 
 var nextFrame = 0;
 function doNextFrame() {
-    window.requestAnimationFrame(doNextFrame);
     // FPS throttling.
     var currFrame = Date.now();
     if (currFrame >= nextFrame) {
@@ -89,6 +88,9 @@ function doNextFrame() {
         // Clear out the single-keypress array
         flushkeys();
     }
+    // Need to do the animation frame here or else game continues while
+    // debugger is stopped.
+    window.requestAnimationFrame(doNextFrame);
 }
 
 var layoutA = [
@@ -145,13 +147,13 @@ var layoutB = [
     [ 0,  1,  0,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  1,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  2,  2,  2,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
+    [ 0,  0,  2,  2,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  1,  1,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2]
@@ -377,7 +379,7 @@ function player_CheckBottomEdge() {
     }
     if (checkTileNo != 0) {
         // Midpoint is on a solid tile, done.
-        return playerOffsetX;
+        return { pointType: 2, offsetX: playerOffsetX };
     }
 
     // Midpoint is not on a solid tile. Next, keep checking progressively
@@ -458,7 +460,7 @@ function player_CheckBottomEdge() {
             checkTile = tiles[checkTileNo-1];
             checkHeightNext = checkTile.columns[7] + 7;
             if (checkHeightNext - checkHeightPrev <= 4) {
-                return playerXMidpoint;
+                return { pointType: 2, offsetX: playerXMidpoint };
             }
         }
     } else {
@@ -477,22 +479,40 @@ function player_CheckBottomEdge() {
             checkTile = tiles[checkTileNo-1];
             checkHeightNext = checkTile.columns[0] + 7;
             if (checkHeightNext - checkHeightPrev <= 4) {
-                return playerXMidpoint;
+                return { pointType: 2, offsetX: playerXMidpoint };
             }
         }
     }
-
-    return playerOffsetX;
+    // pointType 1 = Away from midpoint
+    // pointType 2 = Midpoint
+    return { pointType: 1, offsetX: playerOffsetX };
 }
 
 function player_CheckSideEdge(rightNotLeft = false) {
 
-    // Start at the corner, then trace upwards.
+    // Start at the corner. If it overlaps something solid, find the top of it
+    //  and check if it's continuous with the adjacent tile closer inward.
+    
+    // If the top is too high, we assume it's a wall and it's a collision.
 
+    // If there's too big of an up-step between the two tiles, they're not
+    //  continuous (it's a ledge instead) and it's a collision.
+    
+    // If there's no adjacent tile, there's a gap. If we're in mid air, this
+    //  is a collision, but if we're standing on something solid
+    //  (like a U-shaped platform where one pillar is slightly higher), it's a
+    //  collision only if it's too high of a step-up from where we're standing.
+
+    // After checking one or more tiles of the bottom of the edge, check the
+    //  remaining tiles above, until the top is reached. If anything's solid,
+    //  it's a collision.
+
+    var standTileYPixelOffset = playerIsMidair ? null : (playerYInt + playerHeight) % 8 |0;
     var checkPixelX = rightNotLeft ? (playerXInt + playerWidth) : (playerXInt - 1);
     var checkPixelY = playerYInt + playerHeight - 1 |0;
     var checkTileX = checkPixelX / 8 |0;
     var checkTileY = checkPixelY / 8 |0;
+    var checkTileYTop = playerYInt / 8 |0;
     var checkTileYPixelOffset = checkPixelY % 8;
     var checkColumn = rightNotLeft ? 0 : 7;
 
@@ -503,37 +523,58 @@ function player_CheckSideEdge(rightNotLeft = false) {
 
     var colliding = false;
 
+    // 0 = No collision
+    // 1 = Corner collision
+    // 2 = Wall collision
+    var collisionType = 0;
+
     if (checkTileNo != 0) {
         // The corner is overlapping a solid tile, so find the top.
         let columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
+        let columnHeightRelativeToPlayer = 0;
         let aboveSurface = false;
 
         if (columnHeight == -1) {
-            // Check tile above.
-            checkTileY--;
-            if (checkTileY >= 0) {
-                checkTileNo = layout[checkTileY][checkTileX];
-                if (checkTileNo != 0) {
-                    columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
-                    if (columnHeight == -1) {
-                        // Too tall, just assume it's a wall.
-                        colliding = true;
+            // Keep checking tiles above.
+            while (columnHeight == -1) {
+                // Check tile above.
+                checkTileY--;
+                if (checkTileY < checkTileYTop) {
+                    // Too tall, just assume it's a wall.
+                    colliding = true;
+                    collisionType = 2;
+                    break;
+                }
+
+                columnHeightRelativeToPlayer -= 8;
+                
+                if (checkTileY >= 0) {
+                    checkTileNo = layout[checkTileY][checkTileX];
+                    if (checkTileNo != 0) {
+                        columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
+                    } else {
+                        // No additional solid tile above.
+                        columnHeight = 0;
+                        checkTileY++;
+                        columnHeightRelativeToPlayer += 9;
+                        break;
                     }
                 } else {
-                    // No additional solid tile above.
+                    // We've gone off the top of the stage.
                     columnHeight = 0;
                     checkTileY++;
+                    columnHeightRelativeToPlayer += 9;
+                    break;
                 }
-            } else {
-                // We've gone off the top of the stage.
-                columnHeight = 0;
-                checkTileY++;
+                
             }
+
         } else if (checkTileYPixelOffset < columnHeight) {
             // The bottom of our edge is above the tile's column height on that
             // boundary, so we're going to assume we won't collide with it.
             aboveSurface = true;
         }
+        columnHeightRelativeToPlayer = (standTileYPixelOffset === null) ? null : columnHeightRelativeToPlayer + standTileYPixelOffset;
 
         if (!colliding && !aboveSurface) {
             // Now check the adjacent tile's heightmap, to see if the
@@ -570,15 +611,20 @@ function player_CheckSideEdge(rightNotLeft = false) {
             // a gap before the column we're checking.
             if (adjacentColumnHeight !== null) {
                 if ((adjacentColumnHeight - columnHeight) > 4) {
-                    // The surface is not continuous.
+                    // The surface is not continuous because there's too big of
+                    // a step.
                     colliding = true;
+                    collisionType = 1;
                 }
             } else {
                 // There's a gap before the column we're checking.
-                colliding = true;
-                // TODO: We can check if we're standing on the ground, and if
-                // so, what height the ground is, and whether the height of
-                // the wall is low enough that we can step up onto it.
+                // If we're standing on something solid, check if the top of the
+                // wall is low enough to step up onto.
+                if ((columnHeightRelativeToPlayer === null) || (columnHeightRelativeToPlayer <= -4)) {
+                    // We're in mid air, or the wall is too high to step up to.
+                    colliding = true;
+                    collisionType = 1;
+                }
             }
         }
     }
@@ -589,18 +635,28 @@ function player_CheckSideEdge(rightNotLeft = false) {
     // If it wasn't, then we know the bottom-most tile is empty.
     // Either way, checkTileX/Y is now pointing at the last checked tile.
 
-    if (!colliding) {
+    if (collisionType != 2) {
         checkTileY--;
         // checkTileX/Y is now pointing at the next unchecked tile.
 
-        // TODO: Scan from here to the top to see if there are any solid tiles.
+        // Check the remainder of the tiles, up to and including the topmost,
+        // for being solid.
+        while ((checkTileY >= checkTileYTop) && (checkTileY >= 0)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+            if (checkTileNo != 0) {
+                colliding = true;
+                collisionType = 2;
+                break;
+            }
+            checkTileY--;
+        }
     }
 
     if (colliding) {
         if (rightNotLeft) {
-            return { colliding: true, alignX: checkTileX * 8 - playerWidth + 0.5 };
+            return { colliding: true, collisionType: collisionType, alignX: checkTileX * 8 - playerWidth + 0.5 };
         } else {
-            return { colliding: true, alignX: (checkTileX+1) * 8 + 0.5 };
+            return { colliding: true, collisionType: collisionType, alignX: (checkTileX+1) * 8 + 0.5 };
         }
     }
     return null;
@@ -612,7 +668,7 @@ function game_update() {
     if (!playerIsMidair) {
         let testResult = player_CheckBottomEdge();
         if (testResult !== null) {
-            maxRunSpeed *= player_GetSpeedAtPoint(testResult, playerHeight)[(playerXSpeed > 0) ? 1 : 0];
+            maxRunSpeed *= player_GetSpeedAtPoint(testResult.offsetX, playerHeight)[(playerXSpeed > 0) ? 1 : 0];
         }
     }
     if (keyState[2]) {  // Left
@@ -761,23 +817,68 @@ function game_update() {
     playerX += playerXSpeed;
     playerXInt = playerX |0;
 
+    
     // Adjust height for slope.
     if (!playerIsMidair) {
         var testResult = player_CheckBottomEdge();
         if (testResult !== null) {
-            testResult = player_GetHeightAtPoint(testResult, playerHeight);
+            testResult = player_GetHeightAtPoint(testResult.offsetX, playerHeight);
         }
         if (testResult !== null) {
             let adjustedPlayerY = (testResult.tileY * 8) - playerHeight + testResult.height;
             let difference = adjustedPlayerY - playerYInt;
-            if ((difference >= -4) && (difference <= 4)) {
+            if ((difference >= -6) && (difference <= 6)) {
                 playerY = adjustedPlayerY;
                 playerYInt = playerY |0;
             }
         }
     }
 
-    var testResult = null;
+    // Do ground scan.
+    var groundTestResult = player_CheckBottomEdge();
+    if (groundTestResult !== null) {
+        groundTestResult = {...player_GetHeightAtPoint(groundTestResult.offsetX, playerHeight), pointType: groundTestResult.pointType };
+    }
+
+    // Do wall scan.
+    var wallTestResult = null;
+    if (playerXSpeed != 0) {
+        wallTestResult = player_CheckSideEdge((playerXSpeed > 0) ? true : false);
+    }
+
+    // Detect whether player is standing or midair.
+    if (!playerIsMidair && (groundTestResult == null || !groundTestResult.colliding)) {
+        playerIsHoldingJump = keyState[6];
+        player_InAir();
+    } else if (playerIsMidair && (groundTestResult !== null) && groundTestResult.colliding) {
+        let newPlayerY = (groundTestResult.tileY * 8) - playerHeight + groundTestResult.height;
+        if ((newPlayerY - playerY) >= -8) {
+            player_Stand();
+            playerY = newPlayerY;
+            playerYInt = playerY |0;
+            if (wallTestResult !== null && (wallTestResult.collisionType == 1)) {
+                wallTestResult = null;
+            }
+        }
+    }
+
+    if ((groundTestResult !== null) && (groundTestResult.pointType == 2) && (groundTestResult.height <= -9)) {
+        // Need to do wall ejection.
+        player_Stand();
+        playerY = playerY - (playerY % 8);
+        playerYInt = playerY |0;
+        wallTestResult = null;
+        if (playerXSpeed != 0) {
+            playerX += (playerXSpeed < 0) ? 8 : -8;
+            playerXInt = playerX |0;
+        }
+    }
+
+    if ((wallTestResult !== null) && (wallTestResult.colliding)) {
+        playerXSpeed = 0;
+        playerX = wallTestResult.alignX;
+        playerXInt = playerX |0;
+    }
 
     // Basic collision with the screen edges.
     if (playerY > 240) {
@@ -796,34 +897,6 @@ function game_update() {
     context.fillStyle = "#000";
     context.fillRect(0,0,320,240);
     
-
-    // Detect whether player is standing or midair.
-    testResult = player_CheckBottomEdge();
-    if (testResult !== null) {
-        testResult = player_GetHeightAtPoint(testResult, playerHeight);
-    }
-
-    if (!playerIsMidair && (testResult == null || !testResult.colliding)) {
-        playerIsHoldingJump = keyState[6];
-        player_InAir();
-    } else if (playerIsMidair && (testResult !== null) && testResult.colliding) {
-        player_Stand();
-        playerY = (testResult.tileY * 8) - playerHeight + testResult.height;
-        playerYInt = playerY |0;
-    }
-
-    // Detect wall.
-    testResult = null;
-
-    if (playerXSpeed != 0) {
-        testResult = player_CheckSideEdge((playerXSpeed > 0) ? true : false);
-    }
-    
-    if ((testResult !== null) && (testResult.colliding)) {
-        playerXSpeed = 0;
-        playerX = testResult.alignX;
-        playerXInt = playerX |0;
-    }    
 
     // Draw the layout.
     for (let y = 0; y < layout.length; y++) {
