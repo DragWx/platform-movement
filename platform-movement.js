@@ -143,37 +143,46 @@ var layoutB = [
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  2,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  1,  0,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  1,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0, 13,  0, 11,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0, 15,  0,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0, 17, 19, 19, 18,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
     [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  2,  2,  2,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0],
-    [ 0,  0,  2,  2,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  1,  1,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    [ 2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 13, 12, 12, 12, 14,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  1,  1,  1, 16,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  1,  1,  1, 16,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 15,  1,  1,  1, 16,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 17, 19, 19, 19, 18,  0],
+    [ 0,  0, 13, 14,  0,  0,  0,  0, 13, 14,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 13, 14,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0, 17, 18,  0,  0,  0,  0, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [ 0,  0,  0,  0,  0,  0,  0,  0, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  3,  1,  1,  1,  1,  1,  1,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0],
+    [12, 12, 12, 12, 12, 12, 12, 12,  1,  1, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,  1,  1,  1,  1,  1,  1,  1,  1, 12, 12, 12, 12, 12, 12, 12, 12, 12]
 ]
 
 var layout = layoutB;
 
 
 var tiles = [
-    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], image: null },   // 1
-    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], image: null },   // 2
-    { columns: [8,7,6,5,4,3,2,1], speed: [1   , 0.71], image: null },   // 3
-    { columns: [1,2,3,4,5,6,7,8], speed: [0.71, 1   ], image: null },   // 4
-    { columns: [8,8,7,7,6,6,5,5], speed: [1   , 0.89], image: null },   // 5
-    { columns: [4,4,3,3,2,2,1,1], speed: [1   , 0.89], image: null },   // 6
-    { columns: [1,1,2,2,3,3,4,4], speed: [0.89, 1   ], image: null },   // 7
-    { columns: [5,5,6,6,7,7,8,8], speed: [0.89, 1   ], image: null },   // 8
-    { columns: [5,5,5,5,1,1,1,1], speed: [1   , 0.71], image: null },   // 9
-    { columns: [1,1,1,1,5,5,5,5], speed: [0.71, 1   ], image: null },   // 10
-    { columns: [5,5,5,5,5,5,5,5], speed: [1   , 1   ], image: null }    // 11
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top: false, bottom: false, left: false, right: false, image: null },   // 0
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 1
+    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], top:  true, bottom: false, left:  true, right:  true, image: null },   // 2
+    { columns: [8,7,6,5,4,3,2,1], speed: [1   , 0.71], top:  true, bottom: false, left: false, right: false, image: null },   // 3
+    { columns: [1,2,3,4,5,6,7,8], speed: [0.71, 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 4
+    { columns: [8,8,7,7,6,6,5,5], speed: [1   , 0.89], top:  true, bottom: false, left: false, right: false, image: null },   // 5
+    { columns: [4,4,3,3,2,2,1,1], speed: [1   , 0.89], top:  true, bottom: false, left: false, right: false, image: null },   // 6
+    { columns: [1,1,2,2,3,3,4,4], speed: [0.89, 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 7
+    { columns: [5,5,6,6,7,7,8,8], speed: [0.89, 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 8
+    { columns: [5,5,5,5,1,1,1,1], speed: [1   , 0.71], top:  true, bottom: false, left: false, right: false, image: null },   // 9
+    { columns: [1,1,1,1,5,5,5,5], speed: [0.71, 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 10
+    { columns: [5,5,5,5,5,5,5,5], speed: [1   , 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 11
+    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], top:  true, bottom: false, left: false, right: false, image: null },   // 12
+    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], top:  true, bottom: false, left:  true, right: false, image: null },   // 13
+    { columns: [1,1,1,1,1,1,1,1], speed: [1   , 1   ], top:  true, bottom: false, left: false, right:  true, image: null },   // 14
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top:  true, bottom: false, left:  true, right: false, image: null },   // 15
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top:  true, bottom: false, left: false, right:  true, image: null },   // 16
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top:  true, bottom:  true, left:  true, right: false, image: null },   // 17
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top:  true, bottom:  true, left: false, right:  true, image: null },   // 18
+    { columns: [0,0,0,0,0,0,0,0], speed: [1   , 1   ], top:  true, bottom:  true, left: false, right: false, image: null }    // 19
 ]
 
 // Speed makes it so you run slower uphill.
@@ -182,21 +191,39 @@ var tiles = [
 function loadLevel() {
     // Create tile graphics based on their column arrays, so we see the exact
     // collision map.
+    var solidColor = [255,255,255,128,128,128];
+    var leftColor = [255,255,255,192,192,192];
+    var rightColor = [255,255,255,192,192,192];
     for (let i = 0; i < tiles.length; i++) {
         let currImage = context.createImageData(8,8);
         for (let x = 0; x < 8; x++) {
+            let currTile = tiles[i];
             let currColumnHeight = tiles[i].columns[x] - 1;
             let currByte = x * 4;
             for (let y = 0; y < 8; y++) {
-                if (y == currColumnHeight) {
-                    currImage.data[currByte  ] = 255;
-                    currImage.data[currByte+1] = 255;
-                    currImage.data[currByte+2] = 255;
+                let colors = solidColor;
+                if ((x == 0) && currTile.left) { colors = leftColor; }
+                else if ((x == 7) && currTile.right) { colors = rightColor; }
+                if ((currTile.top | currTile.bottom | currTile.left | currTile.right) == false) {
+                    currImage.data[currByte  ] = 0;
+                    currImage.data[currByte+1] = 0;
+                    currImage.data[currByte+2] = 0;
+                    currImage.data[currByte+3] = 255;
+                }
+                if (currTile.bottom && (y == 7)) {
+                    currImage.data[currByte  ] = colors[0];
+                    currImage.data[currByte+1] = colors[1];
+                    currImage.data[currByte+2] = colors[2];
+                    currImage.data[currByte+3] = 255;
+                } else if (y == currColumnHeight) {
+                    currImage.data[currByte  ] = colors[0];
+                    currImage.data[currByte+1] = colors[1];
+                    currImage.data[currByte+2] = colors[2];
                     currImage.data[currByte+3] = 255;
                 } else if (y >= currColumnHeight) {
-                    currImage.data[currByte  ] = 128;
-                    currImage.data[currByte+1] = 128;
-                    currImage.data[currByte+2] = 128;
+                    currImage.data[currByte  ] = colors[3];
+                    currImage.data[currByte+1] = colors[4];
+                    currImage.data[currByte+2] = colors[5];
                     currImage.data[currByte+3] = 255;
                 } else {
                     // Yes, this is intentional so the tile's boundaries are visible.
@@ -286,7 +313,7 @@ function player_GetSpeedAtPoint(pixelOffsetX, pixelOffsetY) {
     }
 
     if (testTileNo) {
-        return tiles[testTileNo-1].speed;
+        return tiles[testTileNo].speed;
     } else {
         return [1,1];
     }
@@ -319,7 +346,7 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
 
     var testHeight = null;
     if (testTileNo) {
-        let testTile = tiles[testTileNo-1];
+        let testTile = tiles[testTileNo];
         testHeight = testTile.columns[collTilePixelX] - 1;
         // If the column height was 0 (now -1), we need to check the tile above.
         if (testHeight == -1) {
@@ -327,7 +354,7 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
                 // Nothing above, reset height to top of tile.
                 testHeight = 0;
             } else {
-                let testTileAbove = tiles[testTileAboveNo-1];
+                let testTileAbove = tiles[testTileAboveNo];
                 testHeight = testTileAbove.columns[collTilePixelX] - 9;
             }
         }
@@ -336,7 +363,7 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
         // aligned to a downward-moving slope: the slope will eventually move
         // down one layout-row, and we have to be able to detect that.
         if (testTileBelowNo) {
-            let testTileBelow = tiles[testTileBelowNo-1];
+            let testTileBelow = tiles[testTileBelowNo];
             testHeight = testTileBelow.columns[collTilePixelX] + 7
             if (testHeight == 7) {
                 // This column indicates to check the tile above, but we know the
@@ -356,10 +383,10 @@ function player_GetHeightAtPoint(pixelOffsetX, pixelOffsetY) {
 }
 
 function player_CheckBottomEdge() {
-    // Along the bottom edge, find the nearest pixel of the nearest solid tile,
-    // nearest to the midpoint of the bottom edge.
+    // Along the bottom edge, find the nearest tile boundary relative to the
+    // bottom edge's midpoint.
 
-    // First, check the midpoint itself to see if it's overtop a solid tile.
+    // First, check the midpoint itself to see if it overlaps a solid tile.
 
     var playerXMidpoint = (playerWidth / 2) |0;
     var playerOffsetX = playerXMidpoint;
@@ -435,7 +462,7 @@ function player_CheckBottomEdge() {
     // See how long we can trace a continuous slope towards the midpoint.
     // Stop if the change is too great, or if we reach the midpoint.
     
-    var checkTile = tiles[checkTileNo-1];
+    var checkTile = tiles[checkTileNo];
     var checkHeightPrev = null;
     var checkHeightNext = null;
 
@@ -457,7 +484,7 @@ function player_CheckBottomEdge() {
             checkTileNo = layout[checkTileY][checkTileX];
         }
         if (checkTileNo != 0) {
-            checkTile = tiles[checkTileNo-1];
+            checkTile = tiles[checkTileNo];
             checkHeightNext = checkTile.columns[7] + 7;
             if (checkHeightNext - checkHeightPrev <= 4) {
                 return { pointType: 2, offsetX: playerXMidpoint };
@@ -476,7 +503,7 @@ function player_CheckBottomEdge() {
             checkTileNo = layout[checkTileY][checkTileX];
         }
         if (checkTileNo != 0) {
-            checkTile = tiles[checkTileNo-1];
+            checkTile = tiles[checkTileNo];
             checkHeightNext = checkTile.columns[0] + 7;
             if (checkHeightNext - checkHeightPrev <= 4) {
                 return { pointType: 2, offsetX: playerXMidpoint };
@@ -488,7 +515,7 @@ function player_CheckBottomEdge() {
     return { pointType: 1, offsetX: playerOffsetX };
 }
 
-function player_CheckSideEdge(rightNotLeft = false) {
+function player_CheckSideEdge_old(rightNotLeft = false) {
 
     // Start at the corner. If it overlaps something solid, find the top of it
     //  and check if it's continuous with the adjacent tile closer inward.
@@ -530,7 +557,7 @@ function player_CheckSideEdge(rightNotLeft = false) {
 
     if (checkTileNo != 0) {
         // The corner is overlapping a solid tile, so find the top.
-        let columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
+        let columnHeight = tiles[checkTileNo].columns[checkColumn] - 1;
         let columnHeightRelativeToPlayer = 0;
         let aboveSurface = false;
 
@@ -551,7 +578,7 @@ function player_CheckSideEdge(rightNotLeft = false) {
                 if (checkTileY >= 0) {
                     checkTileNo = layout[checkTileY][checkTileX];
                     if (checkTileNo != 0) {
-                        columnHeight = tiles[checkTileNo-1].columns[checkColumn] - 1;
+                        columnHeight = tiles[checkTileNo].columns[checkColumn] - 1;
                     } else {
                         // No additional solid tile above.
                         columnHeight = 0;
@@ -588,7 +615,7 @@ function player_CheckSideEdge(rightNotLeft = false) {
                 checkTileNo = layout[checkTileY][checkTileX];
                 
                 if (checkTileNo != 0) {
-                    adjacentColumnHeight = tiles[checkTileNo-1].columns[adjacentCheckColumn] - 1;
+                    adjacentColumnHeight = tiles[checkTileNo].columns[adjacentCheckColumn] - 1;
                 } else {
                     // No tile directly adjacent, so check tile below.
                     checkTileY++;
@@ -597,7 +624,7 @@ function player_CheckSideEdge(rightNotLeft = false) {
                     }
                     checkTileY--;
                     if (checkTileNo != 0) {
-                        adjacentColumnHeight = tiles[checkTileNo-1].columns[adjacentCheckColumn] + 7;
+                        adjacentColumnHeight = tiles[checkTileNo].columns[adjacentCheckColumn] + 7;
                         if (adjacentColumnHeight == 7) {
                             // We already know the tile above is blank.
                             adjacentColumnHeight = 8;
@@ -662,7 +689,64 @@ function player_CheckSideEdge(rightNotLeft = false) {
     return null;
 }
 
+function player_CheckSideEdge(rightNotLeft = false) {
+    // Check if any tiles overlapping the player's side edge are an opposing
+    // wall.
+
+    var checkPixelX = rightNotLeft ? (playerXInt + playerWidth) : (playerXInt - 1);
+    var checkPixelY = playerYInt + playerHeight - 1 |0;
+    var checkTileX = checkPixelX / 8 |0;
+    var checkTileY = checkPixelY / 8 |0;
+    var checkTileYTop = playerYInt / 8 |0;
+    if (checkTileYTop < 0) {
+        checkTileYTop = 0;
+    }
+
+    var edgeName = rightNotLeft ? "left" : "right";
+
+    // 0 = No collision
+    // 1 = Corner collision
+    // 2 = Wall collision
+    var collisionType = 0;
+
+    if ((checkTileX < 0) || checkTileX >= layout[0].length) {
+        // Edge is off the stage.
+        return null;
+    }
+
+    // Continue checking along the edge to see if there's any more collision.
+    let isCorner = true;
+    for (; checkTileY >= checkTileYTop; checkTileY--) {
+        var checkTileNo = 0;
+        if ((checkTileY >= 0) && (checkTileY < layout.length)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+        }
+        var currTile = tiles[checkTileNo];
+        if (currTile[edgeName]) {
+            // This tile is solid and overlapping our edge.
+            if (isCorner) {
+                // Corner collision, keep checking after this.
+                collisionType = 1;
+            } else {
+                // Wall collision, we can stop here.
+                collisionType = 2;
+                break;
+            }
+        }
+    }
+
+    if (collisionType != 0) {
+        if (rightNotLeft) {
+            return { colliding: true, collisionType: collisionType, alignX: checkTileX * 8 - playerWidth + 0.5 };
+        } else {
+            return { colliding: true, collisionType: collisionType, alignX: (checkTileX+1) * 8 + 0.5 };
+        }
+    }
+    return null;
+}
+
 function game_update() {
+
     /* #region Handle movement */
     var maxRunSpeed = (playerIsHovering ? playerMaxRunSpeedWhileHovering : playerMaxRunSpeed);
     if (!playerIsMidair) {
@@ -905,7 +989,7 @@ function game_update() {
             let drawX = x * 8;
             let currTile = layout[y][x]
             if (currTile > 0) {
-                let tileDef = tiles[currTile-1];
+                let tileDef = tiles[currTile];
                 context.putImageData(tileDef.image, drawX, drawY);
             }
         }
