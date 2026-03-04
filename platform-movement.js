@@ -733,6 +733,9 @@ function player_CheckSideEdge(rightNotLeft = false) {
                 break;
             }
         }
+        if (isCorner) {
+            isCorner = false;
+        }
     }
 
     if (collisionType != 0) {
