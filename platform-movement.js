@@ -515,6 +515,107 @@ function player_CheckBottomEdge() {
     return { pointType: 1, offsetX: playerOffsetX };
 }
 
+function player_CheckTopEdge() {
+    // First, check the midpoint itself to see if it overlaps a solid tile.
+
+    var playerXMidpoint = (playerWidth / 2) |0;
+    var playerOffsetX = playerXMidpoint;
+    var checkPixelX = playerXInt + playerOffsetX;
+    
+    var checkTileX = checkPixelX / 8 |0;
+    var checkTileY = playerYInt / 8 |0;
+
+    var checkTileNo = 0;
+    if ((checkTileY >= 0) && (checkTileY < layout.length)) {
+        if ((checkTileX >= 0) && (checkTileX < layout[checkTileY].length)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+        }
+    } else {
+        // Y is out of bounds.
+        return null;
+    }
+    var checkTile;
+    if (checkTileNo != 0) {
+        checkTile = tiles[checkTileNo];
+        if (checkTile.bottom) {
+            // Midpoint is on a solid tile, done.
+            return { collisionType: 3 };
+        }
+    }
+
+    // Midpoint is not on a solid tile. Next, keep checking progressively
+    // outward until we find a solid tile.
+
+    // First, determine whether we're closer to the left or right tile boundary.
+    var tileOffsetX = checkPixelX % 8 |0;
+    var pixelIncrementAmount = 1;
+    var tileIncrementAmount = 1;
+    var moveRightNotLeft = (tileOffsetX >= 4) ? true : false;
+    if (moveRightNotLeft) {
+        playerOffsetX = playerOffsetX - tileOffsetX + 7;
+    } else {
+        playerOffsetX = playerOffsetX - tileOffsetX;
+    }
+
+    // Now bounce left and right (or right and left), progressively getting
+    // farther outward. Doing it this way means we check each boundary in order
+    // from nearest to farthest.
+
+    // We want to check the leftmost pixel of rightward tiles, and the rightmost
+    // pixel of leftward tiles.
+
+    var collisionType = 0;
+    for (let i = 0; i < 16; i++) {
+        if (moveRightNotLeft) {
+            playerOffsetX += pixelIncrementAmount;
+            checkTileX += tileIncrementAmount;
+        } else {
+            playerOffsetX -= pixelIncrementAmount;
+            checkTileX -= tileIncrementAmount;
+        }
+        if ((playerOffsetX < 0) || (playerOffsetX >= playerWidth)) {
+            // The next boundary is outside of our top edge, so exit.
+            break;
+        }
+        if ((checkTileX >= 0) && (checkTileX < layout[checkTileY].length)) {
+            checkTileNo = layout[checkTileY][checkTileX];
+            if (checkTileNo != 0) {
+                checkTile = tiles[checkTileNo]
+                if (checkTile.bottom) {
+                    // Found a tile!
+                    if ((collisionType == 0) && (playerOffsetX <= 3)) {
+                        // Left corner
+                        collisionType = 1;
+                    } else if ((collisionType == 0) && (playerOffsetX >= playerWidth - 4)) {
+                        // Right corner
+                        collisionType = 2;
+                    } else {
+                        // Ceiling
+                        return { collisionType: 3 };
+                    }
+                }
+            }
+        }
+        if (i == 15) {
+            // Just preventing an infinite loop.
+            return null;
+        }
+        pixelIncrementAmount += 8;
+        tileIncrementAmount++;
+        moveRightNotLeft = !moveRightNotLeft;
+    }
+
+    // Return whatever we found.
+
+    // collisionType 1 = Left corner
+    // collisionType 2 = Right corner
+    // collisionType 3 = Ceiling
+    if (collisionType) {
+        return { collisionType: collisionType };
+    }
+    return null;
+}
+
 function player_CheckSideEdge_old(rightNotLeft = false) {
 
     // Start at the corner. If it overlaps something solid, find the top of it
@@ -933,6 +1034,11 @@ function game_update() {
         wallTestResult = player_CheckSideEdge((playerXSpeed > 0) ? true : false);
     }
 
+    // This is not what this code currently does, but ideally:
+    // Normally, do ground then wall, except:
+    // On corner-wall + corner-ground (on same corner), do ground, ignore wall.
+    // On full-wall + corner-ground (on same side), do wall, ignore ground.
+
     // Detect whether player is standing or midair.
     if (!playerIsMidair && (groundTestResult == null || !groundTestResult.colliding)) {
         playerIsHoldingJump = keyState[6];
@@ -958,6 +1064,62 @@ function game_update() {
         if (playerXSpeed != 0) {
             playerX += (playerXSpeed < 0) ? 8 : -8;
             playerXInt = playerX |0;
+        }
+    }
+
+    var ceilingTestResult = null;
+    if (playerYSpeed < 0) {
+        ceilingTestResult = player_CheckTopEdge();
+    }
+
+    // When jumping into a corner:
+    //  - Moving into corner, or hovering, bonk.
+    //  - Neutral or moving away from corner, snap away and don't bonk.
+    // After any bonk, redo the wall check. Otherwise, corner tiles embedded
+    //  into the ceiling can cause a horizontal snap, including when jumping
+    //  against actual corners.
+
+    if (ceilingTestResult !== null) {
+        let bonk = false;
+        switch (ceilingTestResult.collisionType) {
+        case 1: // Left corner
+            if ((playerXSpeed < 0) || playerIsHovering) {
+                // Moving into it, so bonk.
+                bonk = true;
+            } else {
+                // Not moving into it, so don't bonk and snap away.
+                playerX += 8 - (playerX % 8);
+                playerXInt = playerX |0;
+            }
+            break;
+        case 2: // Right corner
+            if ((playerXSpeed > 0) || playerIsHovering) {
+                // Moving into it, so bonk.
+                bonk = true;
+            } else {
+                // Not moving into it, so don't bonk and snap away.
+                playerX -= (playerX - 1) % 8;
+                playerXInt = playerX |0;
+            }
+            break;
+        case 3: // Ceiling
+            bonk = true;
+            break;
+        }
+        if (bonk) {
+            playerY += 8 - (playerY % 8);
+            playerYInt = playerY |0;
+            playerYSpeed = 0;
+            if (playerIsHovering) {
+                playerIsHovering = false;
+                playerInitialHoverDone = true;
+                playerHasHovered = true;
+            }
+            if (wallTestResult !== null) {
+                // Need to recheck, because jumping into a corner tile can cause
+                // a horizontal snap, due to a ceiling/wall tie.
+                wallTestResult = player_CheckSideEdge((playerXSpeed > 0) ? true : false);
+            }
         }
     }
 
