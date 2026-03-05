@@ -1019,6 +1019,58 @@ function game_update() {
         }
     }
 
+    var ceilingTestResult = null;
+    if (playerIsMidair && (playerYSpeed < 0)) {
+        ceilingTestResult = player_CheckTopEdge();
+    }
+
+    // When jumping into a corner:
+    //  - Moving into corner, or hovering, bonk.
+    //  - Neutral or moving away from corner, snap away and don't bonk.
+    // After any bonk, redo the wall check (if it was done already).
+    //  Otherwise, corner tiles embedded into the ceiling can cause a horizontal
+    //  snap, including when jumping against actual corners.
+
+    if (ceilingTestResult !== null) {
+        let bonk = false;
+        switch (ceilingTestResult.collisionType) {
+        case 1: // Left corner
+            if ((playerXSpeed < 0) || playerIsHovering) {
+                // Moving into it, so bonk.
+                bonk = true;
+            } else {
+                // Not moving into it, so snap away and don't bonk.
+                playerX += 8 - (playerX % 8);
+                playerXInt = playerX |0;
+            }
+            break;
+        case 2: // Right corner
+            if ((playerXSpeed > 0) || playerIsHovering) {
+                // Moving into it, so bonk.
+                bonk = true;
+            } else {
+                // Not moving into it, so snap away and don't bonk.
+                playerX -= (playerX + playerWidth) % 8;
+                playerXInt = playerX |0;
+            }
+            break;
+        case 3: // Ceiling
+            bonk = true;
+            break;
+        }
+        if (bonk) {
+            playerY += 8 - (playerY % 8);
+            playerYInt = playerY |0;
+            playerYSpeed = 0;
+            if (playerIsHovering) {
+                playerIsHovering = false;
+                playerInitialHoverDone = true;
+                playerHasHovered = true;
+            }
+        }
+    }
+
+
     // Do ground scan.
     var groundTestResult = player_CheckBottomEdge();
     if (groundTestResult !== null) {
@@ -1061,62 +1113,6 @@ function game_update() {
         if (playerXSpeed != 0) {
             playerX += (playerXSpeed < 0) ? 8 : -8;
             playerXInt = playerX |0;
-        }
-    }
-
-    var ceilingTestResult = null;
-    if (playerYSpeed < 0) {
-        ceilingTestResult = player_CheckTopEdge();
-    }
-
-    // When jumping into a corner:
-    //  - Moving into corner, or hovering, bonk.
-    //  - Neutral or moving away from corner, snap away and don't bonk.
-    // After any bonk, redo the wall check. Otherwise, corner tiles embedded
-    //  into the ceiling can cause a horizontal snap, including when jumping
-    //  against actual corners.
-
-    if (ceilingTestResult !== null) {
-        let bonk = false;
-        switch (ceilingTestResult.collisionType) {
-        case 1: // Left corner
-            if ((playerXSpeed < 0) || playerIsHovering) {
-                // Moving into it, so bonk.
-                bonk = true;
-            } else {
-                // Not moving into it, so don't bonk and snap away.
-                playerX += 8 - (playerX % 8);
-                playerXInt = playerX |0;
-            }
-            break;
-        case 2: // Right corner
-            if ((playerXSpeed > 0) || playerIsHovering) {
-                // Moving into it, so bonk.
-                bonk = true;
-            } else {
-                // Not moving into it, so don't bonk and snap away.
-                playerX -= (playerX - 1) % 8;
-                playerXInt = playerX |0;
-            }
-            break;
-        case 3: // Ceiling
-            bonk = true;
-            break;
-        }
-        if (bonk) {
-            playerY += 8 - (playerY % 8);
-            playerYInt = playerY |0;
-            playerYSpeed = 0;
-            if (playerIsHovering) {
-                playerIsHovering = false;
-                playerInitialHoverDone = true;
-                playerHasHovered = true;
-            }
-            if (wallTestResult !== null) {
-                // Need to recheck, because jumping into a corner tile can cause
-                // a horizontal snap, due to a ceiling/wall tie.
-                wallTestResult = player_CheckSideEdge((playerXSpeed > 0) ? true : false);
-            }
         }
     }
 
