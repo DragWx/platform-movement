@@ -538,13 +538,9 @@ function player_CheckTopEdge() {
         // Y is out of bounds.
         return null;
     }
-    var checkTile;
-    if (checkTileNo != 0) {
-        checkTile = tiles[checkTileNo];
-        if (checkTile.bottom) {
-            // Midpoint is on a solid tile, done.
-            return { collisionType: 3 };
-        }
+    if ((checkTileNo != 0) && (tiles[checkTileNo].bottom)) {
+        // Midpoint is on a solid tile, done.
+        return { collisionType: 3 };
     }
 
     // Midpoint is not on a solid tile. Next, keep checking progressively
@@ -583,20 +579,17 @@ function player_CheckTopEdge() {
         }
         if ((checkTileX >= 0) && (checkTileX < layout[checkTileY].length)) {
             checkTileNo = layout[checkTileY][checkTileX];
-            if (checkTileNo != 0) {
-                checkTile = tiles[checkTileNo]
-                if (checkTile.bottom) {
-                    // Found a tile!
-                    if ((collisionType == 0) && (playerOffsetX <= 3)) {
-                        // Left corner
-                        collisionType = 1;
-                    } else if ((collisionType == 0) && (playerOffsetX >= playerWidth - 4)) {
-                        // Right corner
-                        collisionType = 2;
-                    } else {
-                        // Ceiling
-                        return { collisionType: 3 };
-                    }
+            if ((checkTileNo != 0) && (tiles[checkTileNo].bottom)) {
+                // Found a tile!
+                if ((collisionType == 0) && (playerOffsetX <= 3)) {
+                    // Left corner
+                    collisionType = 1;
+                } else if ((collisionType == 0) && (playerOffsetX >= playerWidth - 4)) {
+                    // Right corner
+                    collisionType = 2;
+                } else {
+                    // Ceiling
+                    return { collisionType: 3 };
                 }
             }
         }
