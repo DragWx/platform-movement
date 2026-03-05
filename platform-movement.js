@@ -404,7 +404,7 @@ function player_CheckBottomEdge() {
         // Y is out of bounds.
         return null;
     }
-    if (checkTileNo != 0) {
+    if ((checkTileNo != 0) && (tiles[checkTileNo].top)) {
         // Midpoint is on a solid tile, done.
         return { pointType: 2, offsetX: playerOffsetX };
     }
@@ -445,7 +445,7 @@ function player_CheckBottomEdge() {
         }
         if ((checkTileX >= 0) && (checkTileX < layout[checkTileY].length)) {
             checkTileNo = layout[checkTileY][checkTileX];
-            if (checkTileNo != 0) {
+            if ((checkTileNo != 0) && (tiles[checkTileNo].top)) {
                 // Found a tile!
                 break;
             }
@@ -485,9 +485,11 @@ function player_CheckBottomEdge() {
         }
         if (checkTileNo != 0) {
             checkTile = tiles[checkTileNo];
-            checkHeightNext = checkTile.columns[7] + 7;
-            if (checkHeightNext - checkHeightPrev <= 4) {
-                return { pointType: 2, offsetX: playerXMidpoint };
+            if (checkTile.top) {
+                checkHeightNext = checkTile.columns[7] + 7;
+                if (checkHeightNext - checkHeightPrev <= 4) {
+                    return { pointType: 2, offsetX: playerXMidpoint };
+                }
             }
         }
     } else {
@@ -504,9 +506,11 @@ function player_CheckBottomEdge() {
         }
         if (checkTileNo != 0) {
             checkTile = tiles[checkTileNo];
-            checkHeightNext = checkTile.columns[0] + 7;
-            if (checkHeightNext - checkHeightPrev <= 4) {
-                return { pointType: 2, offsetX: playerXMidpoint };
+            if (checkTile.top) {
+                checkHeightNext = checkTile.columns[0] + 7;
+                if (checkHeightNext - checkHeightPrev <= 4) {
+                    return { pointType: 2, offsetX: playerXMidpoint };
+                }
             }
         }
     }
