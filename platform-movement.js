@@ -5,9 +5,9 @@ window.onload = init;
 var gamescreen;
 var canvas;
 var context;
-var inputMap = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "KeyZ", "KeyX"];
-var keyState = [false, false, false, false, false, false, false];
-var keySingle = [false, false, false, false, false, false, false];
+var inputMap = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "KeyZ", "KeyX", "KeyA", "KeyS"];
+var keyState = [false, false, false, false, false, false, false, false, false];
+var keySingle = [false, false, false, false, false, false, false, false, false];
 
 var fpsLimit = 1000/60.0;
 var fpsDisplay = true;
@@ -255,6 +255,9 @@ var playerRunDeceleration = 32/256;
 
 var playerMaxRunSpeed = 2;
 var playerMaxRunSpeedWhileHovering = 1;
+// This variable speed cap allows the player to run faster than their max
+// running speed, temporarily, like when getting launched to the side.
+var playerRunSpeedCap = playerMaxRunSpeed;
 
 // Speed set when jumping.
 var playerJumpSpeed = -4;
@@ -849,7 +852,23 @@ function player_CheckSideEdge(rightNotLeft = false) {
 function game_update() {
 
     /* #region Handle movement */
-    var maxRunSpeed = (playerIsHovering ? playerMaxRunSpeedWhileHovering : playerMaxRunSpeed);
+    // For testing purposes, set speed to double max.
+    if (keySingle[7]) {
+        playerRunSpeedCap = playerMaxRunSpeed * 2;
+        if (playerXSpeed > 0) {
+            playerXSpeed = playerMaxRunSpeed * 2;
+        } else if (playerXSpeed < 0) {
+            playerXSpeed = -playerMaxRunSpeed * 2;
+        }
+    }
+
+    // If the player's x speed ever drops below (normal) max run speed, reset
+    // the cap.
+    if (((playerXSpeed > 0) && (playerXSpeed < playerMaxRunSpeed)) || ((playerXSpeed < 0) && (playerXSpeed > -playerMaxRunSpeed))) {
+        playerRunSpeedCap = playerMaxRunSpeed;
+    }
+
+    var maxRunSpeed = (playerIsHovering ? playerMaxRunSpeedWhileHovering : playerRunSpeedCap);
     if (!playerIsMidair) {
         let testResult = player_CheckBottomEdge();
         if (testResult !== null) {
@@ -864,12 +883,23 @@ function game_update() {
                 // Player has decelerated enough to reach max speed.
                 playerXSpeed = -maxRunSpeed;
             }
+            if (playerIsHovering) {
+                // We don't want to adjust the cap if the ground speed is
+                // affecting the player's current max speed, but hovering
+                // is supposed to slow the player down.
+                playerRunSpeedCap -= playerRunDeceleration;
+            }
         } else {
             // Player is not max speed yet.
             if (playerXSpeed > 0) {
                 // Speed is opposite direction, so skid.
+                if (playerXSpeed > playerMaxRunSpeed) {
+                    playerXSpeed = playerMaxRunSpeed;
+                    playerRunSpeedCap = playerMaxRunSpeed;
+                }
                 playerXSpeed -= playerRunDeceleration;
             } else {
+                // Speed is correct direction, so accelerate.
                 playerXSpeed -= playerRunAcceleration;
             }
             if (playerXSpeed < -maxRunSpeed) {
@@ -877,7 +907,7 @@ function game_update() {
                 playerXSpeed = -maxRunSpeed;
             }
         }
-    } else if (keyState[3]) {
+    } else if (keyState[3]) {   // Right
         if (playerXSpeed > maxRunSpeed) {
             // Player is going faster than max speed.
             playerXSpeed -= playerRunDeceleration;
@@ -885,12 +915,23 @@ function game_update() {
                 // Player has decelerated enough to reach max speed.
                 playerXSpeed = maxRunSpeed;
             }
+            if (playerIsHovering) {
+                // We don't want to adjust the cap if the ground speed is
+                // affecting the player's current max speed, but hovering
+                // is supposed to slow the player down.
+                playerRunSpeedCap -= playerRunDeceleration;
+            }
         } else {
             // Player is not max speed yet.
             if (playerXSpeed < 0) {
                 // Speed is opposite direction, so skid.
+                if (playerXSpeed < -playerMaxRunSpeed) {
+                    playerXSpeed = -playerMaxRunSpeed;
+                    playerRunSpeedCap = playerMaxRunSpeed;
+                }
                 playerXSpeed += playerRunDeceleration;
             } else {
+                // Speed is correct direction, so accelerate.
                 playerXSpeed += playerRunAcceleration;
             }
             if (playerXSpeed > maxRunSpeed) {
@@ -918,6 +959,7 @@ function game_update() {
             }
         } else {
             // Unconditional deceleration to 0.
+            playerRunSpeedCap -= playerRunDeceleration;
             if (playerXSpeed > 0) {
                 playerXSpeed -= playerRunDeceleration;
                 if (playerXSpeed < 0) {
@@ -930,6 +972,12 @@ function game_update() {
                 }
             }
         }
+    }
+    // Make sure the cap is always a minimum of the max run speed.
+    // (This might be optional, because we reset the cap if the player is
+    // below the normal max speed anyway)
+    if (playerRunSpeedCap < playerMaxRunSpeed) {
+        playerRunSpeedCap = playerMaxRunSpeed;
     }
 
     // Apply variable gravity.
